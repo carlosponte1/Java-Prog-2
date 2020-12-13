@@ -36,9 +36,9 @@ public class  Cuenta {
         return saldo;
     } // Fin del método saldo   
     
-    public Persona people() {
+    public Propietario people() {
         
-        return this.propietario;
+        return(Propietario) this.propietario;
                 
     }
     

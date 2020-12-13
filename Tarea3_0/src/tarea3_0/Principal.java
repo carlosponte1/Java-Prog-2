@@ -28,29 +28,57 @@ public class Principal {
     }
     public static void transaccion()
     {
+         Cuenta Cuenta1 ,Cuenta2;
      Scanner sc = new Scanner(System.in);
      double totalCuenta;
-
-        // Creamos la cuenta
-        Cuenta Cuenta1 ,Cuenta2;
-        Cuenta1 = new Cuenta(1, 2500.70,"carlos","Ponte","123","casa2","asda@asdas.com");
-        //Cuenta2 = new Cuenta(2, 3000.70,"carlos1","Ponte1","123","casa2","asda@asdas.com");
-
-        // Consultamos el saldo
-        totalCuenta = Cuenta1.saldo();
-        System.out.println("Total actual en la cuenta: " + totalCuenta + " $");
-
-        // Hacemos un ingreso en la cuenta
-        double ingreso = 350.25;
-        System.out.println("Se ingresan en la cuenta: " + ingreso + " $");
-        Cuenta1.depositar(ingreso);
+       System.out.println("Selecciones cuenta #1 o #2");  
+        int selec;
+        selec= sc.nextInt();
+        if(selec==1){
+            Cuenta1 = new Cuenta(1, 2500.70,"Carlos","Ponte","95647891","Panama","Correo1@asdas.com");
+             System.out.println("Seleciono la cuenta"+Cuenta1.NumCuent()+" " + Cuenta1.people().name +" "+Cuenta1.people().apellido );
+            }
+        else{
+            Cuenta1 = new Cuenta(2, 5000.00,"Juan","rodriguez","62467894","Vergauas","Correo2@asdas.com");
+            System.out.println("Seleciono la cuenta"+Cuenta1.NumCuent()+" " + Cuenta1.people().name +" "+Cuenta1.people().apellido );
+        }
         
-        System.out.println("-------------------------------------------------");
-
-        // Consultamos el saldo de nuevo
-        totalCuenta = Cuenta1.saldo();
-        System.out.println(Cuenta1.saldo());
-        System.out.println("Total actual en la cuenta de :  :: " +" "+ Cuenta1.NumCuent()+" "+totalCuenta + " "); 
+        
+          totalCuenta = Cuenta1.saldo();
+          System.out.println("Total actual en la cuenta: " + totalCuenta + " $");
+           int tip;
+           System.out.println("desea ingresar o retirar");  
+           System.out.println("1 Deposito /// 2 Retiro"); 
+            tip = sc.nextInt();
+            if(tip==1){
+            double ingreso;
+            System.out.println("Ingrese la cantidad a Depositar"); 
+            ingreso = sc.nextDouble();
+            System.out.println("Se ingresan en la cuenta: " + ingreso + " $");
+            Cuenta1.depositar(ingreso);
+            totalCuenta = Cuenta1.saldo();
+           
+System.out.println("Total actual en la cuenta de  " +Cuenta1.people().name +" "+Cuenta1.people().apellido+" "+"Numero de Cuenta: "+ Cuenta1.NumCuent()+" "+"Total en cuenta: "+totalCuenta + " ");             
+         }
+            else{
+            double retiro;
+            System.out.println("Ingrese la cantidad a Retirar"); 
+            retiro = sc.nextDouble();
+            System.out.println("Se Retiraron  de la cuenta: " + retiro + " $");
+            Cuenta1.retirar(retiro);
+            totalCuenta = Cuenta1.saldo();
+            if(totalCuenta<0){
+            System.out.println("Error su Saldo es menor que 0");
+            }
+            
+System.out.println("Total actual en la cuenta de  " +Cuenta1.people().name +" "+Cuenta1.people().apellido+" "+"Numero de Cuenta: "+ Cuenta1.NumCuent()+" "+"Total en cuenta: "+totalCuenta + " ");             
+            
+            }
+         
+       
+      
+        
+      
     }
     
 }
